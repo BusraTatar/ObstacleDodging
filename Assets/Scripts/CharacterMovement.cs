@@ -10,15 +10,15 @@ public class CharacterMovement : MonoBehaviour
     public GameObject end;
     public Image healthBar;
 
-    
-    public float vector1;
+    public GameObject rightControl;
+    public GameObject leftControl;
+  
     
 
     private void Start()
     {
         healthBar.fillAmount = 1f;
-
-      
+        
     }
 
     void Update()
@@ -50,12 +50,20 @@ public class CharacterMovement : MonoBehaviour
             if (healthBar.fillAmount >= 1)
             {
                 //efekt çalýþtýr
-                // +5 score
+                // +10 score
             }
             // win
         }
 
-           
+        if(coll2.gameObject == leftControl)
+        {
+            transform.position = new Vector3(6.5f, -2.85f, 0f);
+        } 
+        
+        if(coll2.gameObject == rightControl)
+        {
+            transform.position = new Vector3(-5.3f, -2.85f, 0f);
+        }  
         
     }
 }

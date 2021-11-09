@@ -17,38 +17,27 @@ public class Menu : MonoBehaviour
     public GameObject scores;
     public GameObject life;
     
-    
+    private Vector3 Mposition;
     
    
     void Start()
     {
         Time.timeScale = 0;
-        
 
+        
 
     }
 
     
     void Update()
     {
-        
+       
     }
     public void RestartEnter()
-    {
+    { 
+        Time.timeScale = 1f;
+        MenuPanel.SetActive(false);
         SceneManager.LoadScene("Game"); 
-        Time.timeScale = 1;
-
-
-       
-        if (pausePanel.activeSelf)
-        {
-            pausePanel.SetActive(false);
-        }
-        if (GameOverPanel.activeSelf)
-        {
-            GameOverPanel.SetActive(false);
-        }
-        
     }
 
     public void PauseEnter()
@@ -73,6 +62,7 @@ public class Menu : MonoBehaviour
         play.SetActive(true);
         pause.gameObject.SetActive(true);
         life.gameObject.SetActive(true);
+        
     }
     public void Resume()
     {
@@ -81,5 +71,7 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1 ;
         
     }
+
+   
 
 }
