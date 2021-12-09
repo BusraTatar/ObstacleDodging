@@ -6,14 +6,18 @@ using UnityEngine.UI;
 
 public class CharacterMovement : MonoBehaviour
 {
+    [SerializeField]
     float speed = 5;
     public GameObject end;
     public Image healthBar;
 
     public GameObject rightControl;
     public GameObject leftControl;
-  
-    
+
+    public Animator Anim;
+
+
+    float speed2;
 
     private void Start()
     {
@@ -22,25 +26,35 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void Update()
-    {   
-        float speed2 = speed * Input.GetAxis("Horizontal");
-        transform.Translate(speed2 * Time.deltaTime, 0, 0);
-       
+    {
+       Movement();  
+    }
+    void Movement()
+    {
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(speed * Time.deltaTime, 0, 0);
+            Anim.SetTrigger("ForRun");
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(-speed * Time.deltaTime, 0, 0);
+            Anim.SetTrigger("ForRun");
+        }
     }
     private void OnCollisionEnter2D(Collision2D coll2)
     {
         
         if(coll2.gameObject.tag == "Weapon")
         {
-
-
-
             healthBar.fillAmount -= 0.2f;
+            Debug.Log("kýlýç");
+
             if (healthBar.fillAmount <= 0.2f)
             {
                 end.SetActive(true);
                 Time.timeScale = 0;
-
+                
             }
         }
         if(coll2.gameObject.tag == "Shield")
@@ -58,11 +72,13 @@ public class CharacterMovement : MonoBehaviour
         if(coll2.gameObject == leftControl)
         {
             transform.position = new Vector3(6.5f, -2.85f, 0f);
+            
         } 
         
         if(coll2.gameObject == rightControl)
         {
             transform.position = new Vector3(-5.3f, -2.85f, 0f);
+            
         }  
         
     }
