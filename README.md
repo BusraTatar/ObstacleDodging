@@ -1,5 +1,5 @@
 # ObstacleDodging
-**Obstacle Dodging** is a simple beginner-friendly desktop game project.
+**Obstacle Dodging** *is a simple beginner-friendly desktop game project.*
 The mechanics used in the game are quite simple, there are parts that can be optimized.
 The main aim of the game is to avoid swords and get shields. Each shield is 5 points and you progress one level for each 10 shields.
 Dear novice developer, what you will learn when you start to review the game and make a similar one;
