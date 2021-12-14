@@ -5,20 +5,29 @@ using UnityEngine.UI;
 
 public class Obstacle : MonoBehaviour
 {
-    int score;
+    public int score;
     public Text score1;
     public Text score2;
     public Text score3;
 
+    int lev = 1;
+    public Text level;
 
+    public GameObject WinPanel;
 
 
 
     private void Update()
     {
         score1.text = score.ToString();
-        score2.text = score.ToString(); //daha sonra bitti panel set active in yanýna alýnacak
-        score3.text = score.ToString(); //daha sonra pause panele alýnacak
+       // score2.text = score.ToString(); //daha sonra bitti panel set active in yanýna alýnacak
+      //  score3.text = score.ToString(); //daha sonra pause panele alýnacak
+        if (score % 50 == 0)
+        {
+            lev++;
+            level.text = lev.ToString();
+        }
+
     }
 
 

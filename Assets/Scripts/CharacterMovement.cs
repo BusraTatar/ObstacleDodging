@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : Obstacle
 {
     [SerializeField]
     float speed = 5;
@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
 
     public GameObject rightControl;
     public GameObject leftControl;
+
 
     public Animator Anim;
 
@@ -48,13 +49,14 @@ public class CharacterMovement : MonoBehaviour
         if(coll2.gameObject.tag == "Weapon")
         {
             healthBar.fillAmount -= 0.2f;
-            Debug.Log("kýlýç");
+           
 
             if (healthBar.fillAmount <= 0.2f)
             {
-                end.SetActive(true);
-                Time.timeScale = 0;
-                
+               
+                   end.SetActive(true);
+                   Time.timeScale = 0;
+         
             }
         }
         if(coll2.gameObject.tag == "Shield")
@@ -65,8 +67,9 @@ public class CharacterMovement : MonoBehaviour
             {
                 //efekt çalýþtýr
                 // +10 score
+                score += 10;
             }
-            // win
+           
         }
 
         if(coll2.gameObject == leftControl)
