@@ -9,35 +9,36 @@ public class Menu : MonoBehaviour
     public Button pause;
     public Button restart;
 
-
     public GameObject pausePanel;
     public GameObject MenuPanel;
     public GameObject GameOverPanel;
+    public GameObject WinPanel;
     public GameObject play;
     public GameObject scores;
     public GameObject life;
     
-    private Vector3 Mposition;
+
     
-   
+
     void Start()
     {
         Time.timeScale = 0;
 
-        
-
     }
-
+    
     
     void Update()
     {
-       
+
+        
     }
+
     public void RestartEnter()
     { 
         Time.timeScale = 1f;
-        MenuPanel.SetActive(false);
         SceneManager.LoadScene("Game"); 
+        MenuPanel.SetActive(false);
+        
     }
 
     public void PauseEnter()
@@ -46,10 +47,6 @@ public class Menu : MonoBehaviour
         pausePanel.SetActive(true);
     }
 
-    public void MenuTurn()
-    {
-        MenuPanel.SetActive(true);
-    }
     public void Quit()
     {
         Application.Quit();
@@ -66,12 +63,12 @@ public class Menu : MonoBehaviour
     }
     public void Resume()
     {
-      
+        WinPanel.SetActive(false);
         pausePanel.SetActive(false);
         Time.timeScale = 1 ;
         
     }
-
    
+
 
 }

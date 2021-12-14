@@ -5,35 +5,7 @@ using UnityEngine.UI;
 
 public class Obstacle : MonoBehaviour
 {
-    public int score;
-    public Text score1;
-    public Text score2;
-    public Text score3;
-
-    int lev = 1;
-    public Text level;
-
-    public GameObject WinPanel;
-
-
-
-    private void Update()
-    {
-        score1.text = score.ToString();
-       // score2.text = score.ToString(); //daha sonra bitti panel set active in yanýna alýnacak
-      //  score3.text = score.ToString(); //daha sonra pause panele alýnacak
-        if (score % 50 == 0)
-        {
-            lev++;
-            level.text = lev.ToString();
-        }
-
-    }
-
-
-
-
-
+   
     void OnCollisionEnter2D(Collision2D coll)
     {
         float xposition = Random.Range(-3.75f, 5f);
@@ -42,7 +14,6 @@ public class Obstacle : MonoBehaviour
         if(coll.gameObject.tag == "GameController" || coll.gameObject.tag == "Player")
         {
             transform.position = new Vector2(xposition,yposition);
-            score += 5;
         }
     }
 

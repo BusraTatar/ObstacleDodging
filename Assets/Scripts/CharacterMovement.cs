@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class CharacterMovement : Obstacle
+public class CharacterMovement : MonoBehaviour
 {
     [SerializeField]
-    float speed = 5;
+    float speed = 4;
     public GameObject end;
-    public Image healthBar;
+    public Slider healthBar;
 
     public GameObject rightControl;
     public GameObject leftControl;
@@ -17,18 +17,28 @@ public class CharacterMovement : Obstacle
 
     public Animator Anim;
 
+    public GameObject winPanel;
 
-    float speed2;
+    public int score=0;
+    public Text score1;
+    
+
+    int lev = 1;
+    public Text level;
+    public Text level2;
+    public Text level3;
+
 
     private void Start()
     {
-        healthBar.fillAmount = 1f;
+        healthBar.value = 1f;
         
     }
 
     void Update()
     {
-       Movement();  
+       Movement();
+   
     }
     void Movement()
     {
@@ -43,15 +53,18 @@ public class CharacterMovement : Obstacle
             Anim.SetTrigger("ForRun");
         }
     }
+
+  
+  
     private void OnCollisionEnter2D(Collision2D coll2)
     {
         
         if(coll2.gameObject.tag == "Weapon")
         {
-            healthBar.fillAmount -= 0.2f;
+            healthBar.value -= 0.2f;
            
 
-            if (healthBar.fillAmount <= 0.2f)
+            if (healthBar.value <= 0.2f)
             {
                
                    end.SetActive(true);
@@ -62,14 +75,21 @@ public class CharacterMovement : Obstacle
         if(coll2.gameObject.tag == "Shield")
         {
 
-            healthBar.fillAmount += 0.2f;
-            if (healthBar.fillAmount >= 1)
+            healthBar.value += 0.2f;
+                
+            score += 5;
+            
+            score1.text = score.ToString();
+            if (score % 50 == 0)
             {
-                //efekt çalýþtýr
-                // +10 score
-                score += 10;
+                lev++;
+                winPanel.SetActive(true);
+                Time.timeScale = 0;
+                level.text = lev.ToString();
+                level2.text = lev.ToString();
+                level3.text = lev.ToString();
+
             }
-           
         }
 
         if(coll2.gameObject == leftControl)
