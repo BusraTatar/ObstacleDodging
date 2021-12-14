@@ -17,4 +17,4 @@ what you will learn when you start to review the game and make a similar one;
 - Invisible controls for characters and objects (prevents them from leaving the game area and teleports for the character) 
 
 
-Note: To play the game, download the ObstacleDodging.rar file in the release and run the ObstacleDodging.exe file.
+Note: To play the game, download the ObstacleDodging.rar file in the ![](https://github.com/BusraTatar/ObstacleDodging/releases/tag/opensourcegame) and run the ObstacleDodging.exe file.
